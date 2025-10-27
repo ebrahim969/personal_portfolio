@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
+import 'package:personal_portfolio/feature/landing/view/layouts/desktop_layout.dart';
+import 'package:personal_portfolio/feature/landing/view/layouts/mobile_layout.dart';
+import 'package:personal_portfolio/feature/landing/view/layouts/tablet_layout.dart';
 import '../widgets/responsive_navigation_bar.dart';
-import '../widgets/hero_section.dart';
-import '../widgets/about_section.dart';
-import '../widgets/projects_section.dart';
-import '../widgets/experience_section.dart';
-import '../widgets/footer_section.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -38,53 +35,28 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColor.scaffoldColor(context),
-              AppColor.scaffoldColor(context).withOpacity(0.95),
-            ],
-          ),
-        ),
-        child: Column(
-          children: [
-            // Responsive Navigation Bar
-            ResponsiveNavigationBar(
-              onHomeTap: () => _scrollToSection(_heroKey),
-              onAboutTap: () => _scrollToSection(_aboutKey),
-              onProjectsTap: () => _scrollToSection(_projectsKey),
-              onExperienceTap: () => _scrollToSection(_experienceKey),
-            ),
-
-            // Scrollable Content
-            Expanded(
-              child: SingleChildScrollView(
-                controller: _scrollController,
-                child: Column(
-                  children: [
-                    // Hero Section
-                    HeroSection(key: _heroKey),
-
-                    // About Section
-                    AboutSection(key: _aboutKey),
-
-                    // Projects Section
-                    ProjectsSection(key: _projectsKey),
-
-                    // Experience Section
-                    ExperienceSection(key: _experienceKey),
-
-                    // Footer Section
-                    FooterSection(),
-                  ],
-                ),
+      drawer: Drawer(),
+      body: LayoutBuilder(
+        builder: (context, constrains) {
+          return Stack(
+            children: [
+              if (constrains.maxWidth <= 600) ...{
+                MobileLayout(),
+              } else if (constrains.maxHeight > 600) ...{
+                TabletLayout(),
+              } else if (constrains.maxWidth > 1200) ...{
+                DesktopLayout(),
+              },
+              ResponsiveNavigationBar(
+                onHomeTap: () => _scrollToSection(_heroKey),
+                onAboutTap: () => _scrollToSection(_aboutKey),
+                onProjectsTap: () => _scrollToSection(_projectsKey),
+                onExperienceTap: () => _scrollToSection(_experienceKey),
+                maxWidth: constrains.maxWidth,
               ),
-            ),
-          ],
-        ),
+            ],
+          );
+        },
       ),
     );
   }

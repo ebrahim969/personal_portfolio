@@ -7,7 +7,6 @@ import 'package:personal_portfolio/core/extension/context_extension.dart';
 import 'package:personal_portfolio/core/routes/app_router.dart';
 import 'package:personal_portfolio/core/theme/app_colors.dart';
 import 'package:personal_portfolio/core/theme/app_text_style.dart';
-import '../routes/app_routers_import.dart';
 
 extension WidgetExtension on Widget {
   Widget withRotatedBox() => RotatedBox(
@@ -93,13 +92,13 @@ extension WidgetExtension on Widget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(radius.r),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 25.0, sigmaY: 25.0),
+        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
         child: Container(
           height: height,
           width: width,
           padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
-            color: color ?? Colors.white.withValues(alpha: .4),
+            color: color ?? Colors.white.withValues(alpha: .1),
             borderRadius: BorderRadius.circular(radius.r),
             border: hasBorder
                 ? Border.all(

@@ -2,6 +2,18 @@
 class AppImages {
   AppImages._();
   
+  /// Assets for assetsAnimationFlutterLoadingIndicator
+  /// assets/animation/flutterLoadingIndicator.json
+  static const String assetsAnimationFlutterLoadingIndicator = "assets/animation/flutterLoadingIndicator.json";
+
+  /// Assets for assetsAnimationFlutterLogo
+  /// assets/animation/flutterLogo.json
+  static const String assetsAnimationFlutterLogo = "assets/animation/flutterLogo.json";
+
+  /// Assets for assetsAnimationHeroAnimation
+  /// assets/animation/heroAnimation.json
+  static const String assetsAnimationHeroAnimation = "assets/animation/heroAnimation.json";
+
   /// Assets for assetsFontsArchivoNarrowBold
   /// assets/fonts/ArchivoNarrow-Bold.ttf
   static const String assetsFontsArchivoNarrowBold = "assets/fonts/ArchivoNarrow-Bold.ttf";
@@ -33,6 +45,10 @@ class AppImages {
   /// Assets for assetsFontsArchivoNarrowSemiBoldItalic
   /// assets/fonts/ArchivoNarrow-SemiBoldItalic.ttf
   static const String assetsFontsArchivoNarrowSemiBoldItalic = "assets/fonts/ArchivoNarrow-SemiBoldItalic.ttf";
+
+  /// Assets for assetsFontsFont
+  /// assets/fonts/font.ttf
+  static const String assetsFontsFont = "assets/fonts/font.ttf";
 
   /// Assets for assetsFontsLuckiestGuyRegular
   /// assets/fonts/LuckiestGuy-Regular.ttf
