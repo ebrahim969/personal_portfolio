@@ -33,8 +33,8 @@ class AppColor {
   static Color scaffoldColor(BuildContext context, {bool listen = true}) {
     return AppTheme.getByTheme(
       context,
-      light: const Color(0xFF251C31),
-      dark: const Color(0xFF251C31),
+      light: const Color(0xFF11071F),
+      dark: const Color(0xFF11071F),
       listen: listen,
     );
   }

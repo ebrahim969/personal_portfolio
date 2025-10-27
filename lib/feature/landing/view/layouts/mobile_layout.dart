@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:personal_portfolio/core/extension/widget_extension.dart';
 import 'package:personal_portfolio/core/theme/app_colors.dart';
 import 'package:personal_portfolio/feature/landing/widgets/custom_header_widget.dart';
-import 'package:personal_portfolio/feature/landing/widgets/hero_section.dart';
+import 'package:personal_portfolio/feature/landing/widgets/mobile/mobile_hero_section.dart';
 import 'package:personal_portfolio/feature/landing/widgets/project_card_widget.dart';
 
 class MobileLayout extends StatelessWidget {
@@ -14,7 +14,10 @@ class MobileLayout extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverList(
-          delegate: SliverChildListDelegate([100.verticalSpace, HeroSection()]),
+          delegate: SliverChildListDelegate([
+            100.verticalSpace,
+            MobileHeroSection(),
+          ]),
         ),
         SliverToBoxAdapter(
           child: Column(

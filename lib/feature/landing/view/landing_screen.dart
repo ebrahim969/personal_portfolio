@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/feature/landing/view/layouts/desktop_layout.dart';
 import 'package:personal_portfolio/feature/landing/view/layouts/mobile_layout.dart';
@@ -38,13 +40,14 @@ class _LandingScreenState extends State<LandingScreen> {
       drawer: Drawer(),
       body: LayoutBuilder(
         builder: (context, constrains) {
+          log(constrains.maxWidth.toString());
           return Stack(
             children: [
               if (constrains.maxWidth <= 600) ...{
                 MobileLayout(),
-              } else if (constrains.maxHeight > 600) ...{
+              } else if (constrains.maxWidth <= 1200) ...{
                 TabletLayout(),
-              } else if (constrains.maxWidth > 1200) ...{
+              } else ...{
                 DesktopLayout(),
               },
               ResponsiveNavigationBar(
