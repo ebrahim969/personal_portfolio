@@ -54,7 +54,7 @@ class AppTextStyle {
     Color? color,
   }) {
     return TextStyle(
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w500,
       color: color ?? AppColor.darkGreyColor(context, listen: listen),
     );
@@ -126,7 +126,7 @@ class AppTextStyle {
     Color? color,
   }) {
     return TextStyle(
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w500,
       color: color ?? AppColor.darkTextColor(context, listen: listen),
     );
@@ -150,7 +150,7 @@ class AppTextStyle {
     Color? color,
   }) {
     return TextStyle(
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w500,
       color: color ?? AppColor.darkTextColor(context, listen: listen),
     );
@@ -198,7 +198,7 @@ class AppTextStyle {
     Color? color,
   }) {
     return TextStyle(
-      fontSize: 20,
+      fontSize: 20.sp,
       fontWeight: FontWeight.w600,
       color: color ?? AppColor.secondAppColor(context, listen: listen),
     );
@@ -416,7 +416,7 @@ class AppTextStyle {
     Color? color,
   }) {
     return TextStyle(
-      fontSize: 10,
+      fontSize: 10.sp,
       fontWeight: FontWeight.w500,
       color: color ?? AppColor.mainAppColor(context, listen: listen),
     );

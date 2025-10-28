@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:personal_portfolio/core/extension/animation_extensions/animated_list_extension.dart';
 import 'package:personal_portfolio/core/extension/widget_extension.dart';
 import 'package:personal_portfolio/core/theme/app_colors.dart';
 import 'package:personal_portfolio/feature/landing/widgets/custom_header_widget.dart';
@@ -31,7 +32,9 @@ class MobileLayout extends StatelessWidget {
         SliverList.separated(
           separatorBuilder: (context, index) => 12.verticalSpace,
           itemBuilder: (context, index) {
-            return ProjectCardWidget();
+            return ProjectCardWidget()
+                .animateStaggered(index)
+                .paddingHorizontal(16.w);
           },
           itemCount: 3,
         ),

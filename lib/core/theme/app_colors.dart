@@ -249,8 +249,8 @@ class AppColor {
   static Color appBarTextColor(BuildContext context, {bool listen = true}) {
     return AppTheme.getByTheme(
       context,
-      light: const Color(0xFF23120B),
-      dark: const Color(0xFF23120B),
+      light: const Color(0xffFFFFFF),
+      dark: const Color(0xffFFFFFF),
       listen: listen,
     );
   }

@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'core/routes/app_router.dart';
 import 'core/theme/style.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -30,7 +31,18 @@ class _PersonalPortfolioState extends State<PersonalPortfolio> {
           locale: context.locale,
           debugShowCheckedModeBanner: false,
           theme: appThemeData(context),
-          builder: BotToastInit(),
+          builder: (context, child) => ResponsiveBreakpoints.builder(
+            child: child!,
+            breakpoints: [
+              const Breakpoint(start: 0, end: 500, name: MOBILE),
+              const Breakpoint(start: 501, end: 1000, name: TABLET),
+              const Breakpoint(
+                start: 1001,
+                end: double.infinity,
+                name: DESKTOP,
+              ),
+            ],
+          ),
           routerConfig: AppRouter.router,
         );
       },

@@ -42,3 +42,18 @@ extension StaggeredListExtension on List<Widget> {
     );
   }
 }
+
+extension StaggeredSliverListExtension on List<Widget> {
+  SliverList animateStaggeredSliverList({int milliseconds = 500}) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
+        return AnimationLimiter(
+          child: this[index].animateStaggered(
+            index,
+            milliseconds: milliseconds,
+          ),
+        );
+      }, childCount: length),
+    );
+  }
+}

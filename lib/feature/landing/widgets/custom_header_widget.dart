@@ -3,9 +3,17 @@ import 'package:personal_portfolio/core/theme/app_colors.dart';
 import 'package:personal_portfolio/core/theme/app_text_style.dart';
 
 class CustomHeaderWidget extends StatelessWidget {
-  const CustomHeaderWidget({super.key, required this.title, this.actions});
+  const CustomHeaderWidget({
+    super.key,
+    required this.title,
+    this.actions,
+    this.titleStyle,
+    this.subtitleStyle,
+  });
   final String title;
   final Widget? actions;
+  final TextStyle? titleStyle;
+  final TextStyle? subtitleStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +21,23 @@ class CustomHeaderWidget extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppTextStyle.text20SSecond(
-            context,
-            color: AppColor.yellowColor(context),
-          ),
+          style:
+              titleStyle ??
+              AppTextStyle.text16MSecond(
+                context,
+                color: AppColor.yellowColor(context),
+              ),
         ),
         Spacer(),
         actions ??
             Text(
               'Latest works made by ibrahim Elenmr',
-              style: AppTextStyle.text14MDark(
-                context,
-                color: AppColor.greyColor(context),
-              ),
+              style:
+                  subtitleStyle ??
+                  AppTextStyle.text12MDarkGrey(
+                    context,
+                    color: AppColor.greyColor(context),
+                  ),
             ),
       ],
     );

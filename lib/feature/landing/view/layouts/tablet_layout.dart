@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:personal_portfolio/feature/landing/widgets/my_work_section_for_tablet_and_desktop.dart';
 import 'package:personal_portfolio/feature/landing/widgets/tablet/tablet_hero_section.dart';
 
 class TabletLayout extends StatelessWidget {
@@ -15,6 +16,7 @@ class TabletLayout extends StatelessWidget {
             TabletHeroSection(),
           ]),
         ),
+        MyWorkSectionForTabletAndDesktop(),
       ],
     );
   }

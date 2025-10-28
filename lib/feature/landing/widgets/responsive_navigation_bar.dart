@@ -4,13 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:personal_portfolio/core/extension/widget_extension.dart';
 import 'package:personal_portfolio/core/images/app_images.dart';
 import 'package:personal_portfolio/core/theme/app_colors.dart';
+import 'package:personal_portfolio/core/theme/app_text_style.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class ResponsiveNavigationBar extends StatefulWidget {
   final VoidCallback onHomeTap;
   final VoidCallback onAboutTap;
   final VoidCallback onProjectsTap;
   final VoidCallback onExperienceTap;
-  final double maxWidth;
+  final ResponsiveBreakpointsData framework;
 
   const ResponsiveNavigationBar({
     super.key,
@@ -18,7 +20,7 @@ class ResponsiveNavigationBar extends StatefulWidget {
     required this.onAboutTap,
     required this.onProjectsTap,
     required this.onExperienceTap,
-    this.maxWidth = double.infinity,
+    required this.framework,
   });
 
   @override
@@ -64,54 +66,68 @@ class _ResponsiveNavigationBarState extends State<ResponsiveNavigationBar>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundColor: AppColor.mainAppColor(context),
-            backgroundImage: AssetImage(AppImages.assetsImagesAvatar),
-          ),
-          const Spacer(),
-          if (widget.maxWidth >= 600) ...{
-            Row(
-              children: [
-                TextButton(
-                  onPressed: widget.onHomeTap,
-                  child: const Text('Home'),
-                ),
-                SizedBox(width: 16.w),
-                TextButton(
-                  onPressed: widget.onAboutTap,
-                  child: const Text('About'),
-                ),
-                SizedBox(width: 16.w),
-                TextButton(
-                  onPressed: widget.onProjectsTap,
-                  child: const Text('Projects'),
-                ),
-                SizedBox(width: 16.w),
-                TextButton(
-                  onPressed: widget.onExperienceTap,
-                  child: const Text('Experience'),
-                ),
-              ],
-            ),
-          } else ...{
-            FadeInRight(
-              duration: const Duration(milliseconds: 800),
-              child: IconButton(
-                onPressed: _toggleMenu,
-                icon: AnimatedIcon(
-                  icon: AnimatedIcons.menu_close,
-                  progress: _animationController,
-                  color: AppColor.mainAppColor(context),
-                  size: 24.w,
-                ),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+          child: Row(
+            children: [
+              CircleAvatar(
+                backgroundColor: AppColor.mainAppColor(context),
+                backgroundImage: AssetImage(AppImages.assetsImagesAvatar),
               ),
-            ),
-          },
-        ],
-      ),
-    ).withGlassEffect(hasBorder: false).paddingAll(16);
+              const Spacer(),
+              if (widget.framework.isDesktop || widget.framework.isTablet) ...{
+                Row(
+                  children: [
+                    TextButton(
+                      onPressed: widget.onHomeTap,
+                      child: Text(
+                        'Home',
+                        style: AppTextStyle.appBarStyle(context),
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    TextButton(
+                      onPressed: widget.onAboutTap,
+                      child: Text(
+                        'About',
+                        style: AppTextStyle.appBarStyle(context),
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    TextButton(
+                      onPressed: widget.onProjectsTap,
+                      child: Text(
+                        'Projects',
+                        style: AppTextStyle.appBarStyle(context),
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    TextButton(
+                      onPressed: widget.onExperienceTap,
+                      child: Text(
+                        'Experience',
+                        style: AppTextStyle.appBarStyle(context),
+                      ),
+                    ),
+                  ],
+                ),
+              } else ...{
+                FadeInRight(
+                  duration: const Duration(milliseconds: 800),
+                  child: IconButton(
+                    onPressed: _toggleMenu,
+                    icon: AnimatedIcon(
+                      icon: AnimatedIcons.menu_close,
+                      progress: _animationController,
+                      color: AppColor.mainAppColor(context),
+                      size: 24.w,
+                    ),
+                  ),
+                ),
+              },
+            ],
+          ),
+        )
+        .withGlassEffect(hasBorder: false)
+        .paddingSymmetric(widget.framework.isDesktop ? 50.w : 16.w, 16.h);
   }
 }

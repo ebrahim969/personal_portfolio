@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/feature/landing/view/layouts/desktop_layout.dart';
 import 'package:personal_portfolio/feature/landing/view/layouts/mobile_layout.dart';
 import 'package:personal_portfolio/feature/landing/view/layouts/tablet_layout.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import '../widgets/responsive_navigation_bar.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -36,30 +35,26 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final frameWork = ResponsiveBreakpoints.of(context);
     return Scaffold(
       drawer: Drawer(),
-      body: LayoutBuilder(
-        builder: (context, constrains) {
-          log(constrains.maxWidth.toString());
-          return Stack(
-            children: [
-              if (constrains.maxWidth <= 600) ...{
-                MobileLayout(),
-              } else if (constrains.maxWidth <= 1200) ...{
-                TabletLayout(),
-              } else ...{
-                DesktopLayout(),
-              },
-              ResponsiveNavigationBar(
-                onHomeTap: () => _scrollToSection(_heroKey),
-                onAboutTap: () => _scrollToSection(_aboutKey),
-                onProjectsTap: () => _scrollToSection(_projectsKey),
-                onExperienceTap: () => _scrollToSection(_experienceKey),
-                maxWidth: constrains.maxWidth,
-              ),
-            ],
-          );
-        },
+      body: Stack(
+        children: [
+          if (frameWork.isMobile) ...{
+            MobileLayout(),
+          } else if (frameWork.isTablet) ...{
+            TabletLayout(),
+          } else if (frameWork.isDesktop) ...{
+            DesktopLayout(),
+          },
+          ResponsiveNavigationBar(
+            onHomeTap: () => _scrollToSection(_heroKey),
+            onAboutTap: () => _scrollToSection(_aboutKey),
+            onProjectsTap: () => _scrollToSection(_projectsKey),
+            onExperienceTap: () => _scrollToSection(_experienceKey),
+            framework: frameWork,
+          ),
+        ],
       ),
     );
   }
