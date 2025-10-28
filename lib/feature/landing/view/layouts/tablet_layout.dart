@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:personal_portfolio/feature/landing/widgets/my_work_section_for_tablet_and_desktop.dart';
 import 'package:personal_portfolio/feature/landing/widgets/tablet/tablet_hero_section.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class TabletLayout extends StatelessWidget {
-  const TabletLayout({super.key});
+  const TabletLayout({super.key, required this.framework});
+  final ResponsiveBreakpointsData framework;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class TabletLayout extends StatelessWidget {
             TabletHeroSection(),
           ]),
         ),
-        MyWorkSectionForTabletAndDesktop(),
+        MyWorkSectionForTabletAndDesktop(framework:framework ,),
       ],
     );
   }

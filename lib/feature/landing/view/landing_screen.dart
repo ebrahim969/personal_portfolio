@@ -41,11 +41,11 @@ class _LandingScreenState extends State<LandingScreen> {
       body: Stack(
         children: [
           if (frameWork.isMobile) ...{
-            MobileLayout(),
+            MobileLayout(frameWork: frameWork,),
           } else if (frameWork.isTablet) ...{
-            TabletLayout(),
+            TabletLayout(framework: frameWork,),
           } else if (frameWork.isDesktop) ...{
-            DesktopLayout(),
+            DesktopLayout(framework: frameWork,),
           },
           ResponsiveNavigationBar(
             onHomeTap: () => _scrollToSection(_heroKey),

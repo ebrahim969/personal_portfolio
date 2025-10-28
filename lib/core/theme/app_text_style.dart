@@ -388,9 +388,10 @@ class AppTextStyle {
     BuildContext context, {
     bool listen = true,
     Color? color,
+    double? fontSize,
   }) {
     return TextStyle(
-      fontSize: 6.sp,
+      fontSize: fontSize ?? 6.sp,
       fontWeight: FontWeight.w300,
       color: color ?? AppColor.lightGreyColor(context, listen: listen),
     );

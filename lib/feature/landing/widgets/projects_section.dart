@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:personal_portfolio/core/theme/app_colors.dart';
 import 'package:personal_portfolio/core/theme/app_text_style.dart';
 import 'package:personal_portfolio/feature/landing/widgets/project_card_widget.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class ProjectsSection extends StatelessWidget {
-  const ProjectsSection({super.key});
+  const ProjectsSection({super.key, required this.frameWork});
+  final ResponsiveBreakpointsData frameWork;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,9 @@ class ProjectsSection extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             itemCount: 3,
             itemBuilder: (index, context) {
-              return ProjectCardWidget();
+              return ProjectCardWidget(
+                framework: frameWork,
+              );
             },
           ),
         ),

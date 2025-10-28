@@ -5,13 +5,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:personal_portfolio/core/extension/animation_extensions/animated_list_extension.dart';
 import 'package:personal_portfolio/core/extension/widget_extension.dart';
 import 'package:personal_portfolio/core/theme/app_colors.dart';
-import 'package:personal_portfolio/core/theme/app_text_style.dart';
 import 'package:personal_portfolio/feature/landing/widgets/custom_header_widget.dart';
 import 'package:personal_portfolio/feature/landing/widgets/project_card_widget.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class MyWorkSectionForTabletAndDesktop extends StatelessWidget {
-  const MyWorkSectionForTabletAndDesktop({super.key, this.height});
+  const MyWorkSectionForTabletAndDesktop({
+    super.key,
+    this.height,
+    required this.framework,
+  });
   final double? height;
+  final ResponsiveBreakpointsData framework;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +24,8 @@ class MyWorkSectionForTabletAndDesktop extends StatelessWidget {
       child: [
         CustomHeaderWidget(
           title: 'My work',
-          titleStyle: AppTextStyle.text10MMain(
-            context,
-            color: AppColor.yellowColor(context),
-          ),
-          subtitleStyle: AppTextStyle.text6LLightGrey(context),
+          framework: framework,
+          actionText: 'Latest work made by ibrahim Elenmr',
         ),
         Divider(color: AppColor.dividerColor(context)),
         16.verticalSpace,
@@ -37,8 +39,7 @@ class MyWorkSectionForTabletAndDesktop extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return ProjectCardWidget(
-                  fontSize: 10.sp,
-                  circleRadius: 14,
+                  framework: framework,
                 ).animateStaggered(index);
               },
               separatorBuilder: (context, index) => 16.horizontalSpace,

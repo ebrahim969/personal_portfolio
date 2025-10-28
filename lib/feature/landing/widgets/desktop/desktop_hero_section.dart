@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -22,12 +23,16 @@ class DesktopHeroSection extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Hello, Iam',
-                  style: AppTextStyle.luckiestGuyStyle(
-                    context,
-                    fontSize: 20.sp,
-                  ),
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Hello, Iam',
+                      textStyle: AppTextStyle.luckiestGuyStyle(
+                        context,
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                  ],
                 ),
                 8.verticalSpace,
                 Text(
@@ -35,7 +40,7 @@ class DesktopHeroSection extends StatelessWidget {
                   style: AppTextStyle.luckiestGuyStyle(
                     context,
                     color: AppColor.mainAppColor(context),
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                   ),
                 ),
               ],
@@ -48,7 +53,8 @@ class DesktopHeroSection extends StatelessWidget {
           children: [
             Text(
               '" You can develop\n your dream app\n right now "',
-              style: AppTextStyle.text6LLightGrey(context),
+              style: AppTextStyle.text6LLightGrey(context, fontSize: 4.sp),
+              textAlign: TextAlign.center,
             ),
             8.horizontalSpace,
 
@@ -64,21 +70,27 @@ class DesktopHeroSection extends StatelessWidget {
                       'Working As',
                       style: AppTextStyle.luckiestGuyStyle(
                         context,
-                        fontSize: 10.sp,
+                        fontSize: 8.sp,
                       ),
                     ),
                     8.horizontalSpace,
                     Lottie.asset(AppImages.assetsAnimationFlutterLogo),
                   ],
                 ),
+
                 16.verticalSpace,
-                Text(
-                  'Flutter Developer',
-                  style: AppTextStyle.luckiestGuyStyle(
-                    context,
-                    color: AppColor.mainAppColor(context),
-                    fontSize: 15.sp,
-                  ),
+                AnimatedTextKit(
+                  animatedTexts: [
+                    WavyAnimatedText(
+                      'Flutter Developer',
+                      textStyle: AppTextStyle.luckiestGuyStyle(
+                        context,
+                        color: AppColor.mainAppColor(context),
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ],
+                  totalRepeatCount: 1,
                 ),
               ],
             ),
