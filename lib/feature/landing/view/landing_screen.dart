@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_portfolio/feature/landing/view/layouts/desktop_layout.dart';
 import 'package:personal_portfolio/feature/landing/view/layouts/mobile_layout.dart';
-import 'package:personal_portfolio/feature/landing/view/layouts/tablet_layout.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../widgets/responsive_navigation_bar.dart';
 
@@ -40,13 +38,7 @@ class _LandingScreenState extends State<LandingScreen> {
       drawer: Drawer(),
       body: Stack(
         children: [
-          if (frameWork.isMobile) ...{
             MobileLayout(frameWork: frameWork,),
-          } else if (frameWork.isTablet) ...{
-            TabletLayout(framework: frameWork,),
-          } else if (frameWork.isDesktop) ...{
-            DesktopLayout(framework: frameWork,),
-          },
           ResponsiveNavigationBar(
             onHomeTap: () => _scrollToSection(_heroKey),
             onAboutTap: () => _scrollToSection(_aboutKey),

@@ -212,6 +212,20 @@ extension WidgetExtension on Widget {
   }) {
     return FadeInRight(duration: duration, curve: curve, child: this);
   }
+
+  Widget fadeInUp({
+    Duration duration = const Duration(milliseconds: 800),
+    Curve curve = Curves.fastOutSlowIn,
+  }) {
+    return FadeInUp(duration: duration, curve: curve, child: this);
+  }
+
+  Widget fadeInDown({
+    Duration duration = const Duration(milliseconds: 800),
+    Curve curve = Curves.fastOutSlowIn,
+  }) {
+    return FadeInDown(duration: duration, curve: curve, child: this);
+  }
 }
 
 extension PaddingExtension on Widget {
